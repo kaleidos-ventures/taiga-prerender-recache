@@ -13,8 +13,19 @@ def recache_schedule(url):
 
 
 def recache_page(url):
-    print(url)
-    requests.post(getattr(settings, 'PRERENDER_URL', 'http://localhost:3000')+"/recache?_escaped_fragment_=", {"prerenderToken": getattr(settings, 'PRERENDER_TOKEN', ''), "url": url})
+    token = getattr(settings, 'PRERENDER_TOKEN', '');
+    delete_cache_url = "{}/{}?_escaped_fragment_=&token={}".format(
+        getattr(settings, 'PRERENDER_URL', 'http://localhost:3000'),
+        url,
+        token
+    )
+    recache_url = "{}/{}?_escaped_fragment_=".format(
+        getattr(settings, 'PRERENDER_URL', 'http://localhost:3000'),
+        url,
+    )
+
+    requests.delete(delete_cache_url)
+    requests.get(recache_url)
 
 
 def process_scheduled_recaches():
