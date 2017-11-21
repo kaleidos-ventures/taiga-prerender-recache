@@ -72,7 +72,11 @@ def recache_kanban(project):
 
 
 @receiver(post_save, sender=User)
-def user_post_save(instance, **kwargs):
+def user_post_save(update_fields, instance, **kwargs):
+    # No recache on last_login update
+    if len(update_fields) == 1 and 'last_login' in update_fields:
+        return
+
     recache_user_profile(instance)
 
 
