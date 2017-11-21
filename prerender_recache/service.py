@@ -14,13 +14,11 @@ def recache_schedule(url):
 
 def recache_page(url):
     token = getattr(settings, 'PRERENDER_TOKEN', '');
-    delete_cache_url = "{}/{}?_escaped_fragment_=&token={}".format(
-        getattr(settings, 'PRERENDER_URL', 'http://localhost:3000'),
+    delete_cache_url = "{}?_escaped_fragment_=&token={}".format(
         url,
         token
     )
-    recache_url = "{}/{}?_escaped_fragment_=".format(
-        getattr(settings, 'PRERENDER_URL', 'http://localhost:3000'),
+    recache_url = "{}?_escaped_fragment_=".format(
         url,
     )
 
