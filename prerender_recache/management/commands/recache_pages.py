@@ -8,7 +8,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         with advisory_lock("reache_pages", wait=False) as acquired:
-            if adquired:
+            if acquired:
                 process_scheduled_recaches()
             else:
                 print("Other recache process running")
