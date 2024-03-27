@@ -16,7 +16,7 @@ setup(
     keywords = 'taiga, prerender',
     author = 'Jesús Espino García',
     author_email = 'jesus.espino@kaleidos.net',
-    url = 'https://github.com/kaleidos-ventures/taiga-prerender-recache',
+    url = 'https://github.com/taigaio/taiga-prerender-recache',
     license = 'MPL-2',
     include_package_data = True,
     packages = find_packages(),
